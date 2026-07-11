@@ -1,3 +1,7 @@
+<?php
+require_once "../config/session.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,13 +55,27 @@
 
                 <p>Please login to continue</p>
 
+                <?php if(isset($_SESSION['error'])): ?>
+
+                <div class="alert alert-danger">
+
+                    <?php
+        echo $_SESSION['error'];
+        unset($_SESSION['error']);
+    ?>
+
+                </div>
+
+                <?php endif; ?>
+
                 <form action="login_process.php" method="POST">
 
                     <div class="mb-3">
 
                         <label>Email Address</label>
 
-                        <input type="email" name="email" class="form-control" required>
+                        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+
                     </div>
 
                     <div class="mb-3">
@@ -66,7 +84,8 @@
 
                         <div class="input-group">
 
-                            <input type="password" name="password" id="password" class="form-control" required>
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="Enter your password" required>
 
                             <button class="btn btn-outline-secondary" type="button" id="togglePassword">
 

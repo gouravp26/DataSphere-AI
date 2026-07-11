@@ -4,9 +4,7 @@
 
         <i class="bi bi-search"></i>
 
-        <input
-        type="text"
-        placeholder="Search...">
+        <input type="text" placeholder="Search...">
 
     </div>
 
@@ -18,11 +16,9 @@
 
         <div class="profile">
 
-            <img
-            src="https://i.pravatar.cc/40"
-            alt="">
+            <img src="https://i.pravatar.cc/40" alt="">
 
-            <span>Admin</span>
+            <span><?= htmlspecialchars($_SESSION['user_name']) ?></span>
 
         </div>
 
