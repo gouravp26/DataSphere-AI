@@ -70,11 +70,12 @@ if (!isset($_SESSION['user_id'])) {
 
                             <div class="d-flex justify-content-between">
 
-                                <button class="btn btn-success btn-sm">
+                                <a href="../records/index.php?dataset_id=<?= $dataset['id'] ?>"
+                                    class="btn btn-success btn-sm">
 
                                     Open
 
-                                </button>
+                                </a>
 
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#editDatasetModal<?= $dataset['id'] ?>">
