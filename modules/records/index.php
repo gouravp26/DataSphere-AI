@@ -15,6 +15,7 @@ if (!isset($_GET['dataset_id'])) {
 }
 
 $dataset_id = (int)$_GET['dataset_id'];
+$search = trim($_GET['search'] ?? '');
 
 $stmt = $conn->prepare("SELECT * FROM datasets WHERE id = ?");
 $stmt->execute([$dataset_id]);
@@ -32,14 +33,35 @@ $stmt->execute([$dataset_id]);
 
 $fields = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $conn->prepare("
-SELECT *
-FROM records
-WHERE dataset_id = ?
-ORDER BY created_at DESC
-");
+if ($search != "") {
 
-$stmt->execute([$dataset_id]);
+    $stmt = $conn->prepare("
+    SELECT DISTINCT records.*
+    FROM records
+    JOIN record_values
+        ON records.id = record_values.record_id
+    WHERE records.dataset_id = ?
+    AND record_values.value LIKE ?
+    ORDER BY records.created_at DESC
+    ");
+
+    $stmt->execute([
+        $dataset_id,
+        "%".$search."%"
+    ]);
+
+} else {
+
+    $stmt = $conn->prepare("
+    SELECT *
+    FROM records
+    WHERE dataset_id = ?
+    ORDER BY created_at DESC
+    ");
+
+    $stmt->execute([$dataset_id]);
+
+}
 
 $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -155,6 +177,25 @@ echo "</td>";
 
 ?>
 
+                                <form method="GET" class="mb-3">
+
+                                    <input type="hidden" name="dataset_id" value="<?= $dataset_id ?>">
+
+                                    <div class="input-group">
+
+                                        <input type="text" name="search" class="form-control"
+                                            placeholder="Search records..."
+                                            value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+
+                                        <button class="btn btn-primary">
+
+                                            <i class="bi bi-search"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </form>
                                 <td>
 
                                     <a href="edit.php?record_id=<?= $record['id'] ?>" class="btn btn-warning btn-sm">
@@ -163,11 +204,13 @@ echo "</td>";
 
                                     </a>
 
-                                    <button class="btn btn-danger btn-sm">
+                                    <a href="delete.php?record_id=<?= $record['id'] ?>&dataset_id=<?= $dataset_id ?>"
+                                        class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Are you sure you want to delete this record?')">
 
                                         Delete
 
-                                    </button>
+                                    </a>
 
                                 </td>
 
