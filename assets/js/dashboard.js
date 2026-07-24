@@ -1,61 +1,58 @@
-// Student Registration Chart
+// Records Overview Chart
 
-const studentChart = new Chart(document.getElementById('studentChart'),{
+const recordsChart = new Chart(document.getElementById("recordsChart"), {
+    type: "bar",
 
-type:'line',
+    data: {
+        labels: chartLabels,
+        datasets: [{
+            label: "Records",
+            data: chartData,
+            backgroundColor: "#0d6efd"
+        }]
+    },
 
-data:{
-
-labels:['Jan','Feb','Mar','Apr','May','Jun'],
-
-datasets:[{
-
-label:'Students',
-
-data:[120,180,260,310,420,500],
-
-borderColor:'#4F46E5',
-
-backgroundColor:'rgba(79,70,229,.15)',
-
-fill:true,
-
-tension:.4
-
-}]
-
-}
-
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: "bottom"
+            }
+        }
+    }
 });
 
-// Department Chart
 
-const departmentChart = new Chart(document.getElementById('departmentChart'),{
+// Datasets Overview Chart
 
-type:'doughnut',
+const datasetsChart = new Chart(document.getElementById("datasetChart"), {
+    type: "doughnut",
 
-data:{
+    data: {
+        labels: chartLabels,
+        datasets: [{
+            data: chartData,
+            backgroundColor: [
+                "#0d6efd",
+                "#198754",
+                "#ffc107",
+                "#dc3545",
+                "#6f42c1",
+                "#20c997",
+                "#fd7e14",
+                "#0dcaf0"
+            ]
+        }]
+    },
 
-labels:['CSE','ECE','ME','CE'],
-
-datasets:[{
-
-data:[45,20,18,17],
-
-backgroundColor:[
-
-'#4F46E5',
-
-'#06B6D4',
-
-'#22C55E',
-
-'#F59E0B'
-
-]
-
-}]
-
-}
-
-});
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: "bottom"
+            }
+        }
+    }
+});ś

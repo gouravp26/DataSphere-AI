@@ -1,5 +1,9 @@
 <?php
 require_once "../config/session.php";
+if (isset($_SESSION['user_id'])) {
+    header("Location: ../dashboard/index.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -59,10 +63,9 @@ require_once "../config/session.php";
 
                 <div class="alert alert-danger">
 
-                    <?php
-        echo $_SESSION['error'];
-        unset($_SESSION['error']);
-    ?>
+                    <?= htmlspecialchars($_SESSION['error']) ?>
+
+                    <?php unset($_SESSION['error']); ?>
 
                 </div>
 
@@ -101,9 +104,11 @@ require_once "../config/session.php";
 
                         <div>
 
-                            <input type="checkbox">
+                            <input type="checkbox" name="remember" class="form-check-input" id="remember">
 
-                            Remember Me
+                            <label class="form-check-label" for="remember">
+                                Remember Me
+                            </label>
 
                         </div>
 

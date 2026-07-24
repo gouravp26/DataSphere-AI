@@ -66,10 +66,12 @@ include "../../components/header.php";
         <div class="content">
 
             <h2>
-
-                Edit Record
-
+                Edit Record - <?= htmlspecialchars($dataset['name']) ?>
             </h2>
+
+            <p class="text-muted">
+                Update the values below.
+            </p>
 
             <form action="update.php" method="POST">
 
@@ -99,51 +101,51 @@ $value = $stmt->fetchColumn();
 
                 <div class="mb-3">
 
-                    <label>
+                    <label class="form-label fw-semibold">
 
-                        <?= htmlspecialchars($field['field_name']) ?>
+                        <?= htmlspecialchars($field['field_label']) ?>
 
                     </label>
                     <?php if($field['field_type']=="text"): ?>
 
                     <input type="text" class="form-control" name="field_<?= $field['id'] ?>"
-                        value="<?= htmlspecialchars($value) ?>">
+                        value="<?= htmlspecialchars($value) ?>" <?= $field['is_required'] ? 'required' : '' ?>>
 
                     <?php endif; ?>
                     <?php if($field['field_type']=="number"): ?>
 
                     <input type="number" class="form-control" name="field_<?= $field['id'] ?>"
-                        value="<?= htmlspecialchars($value) ?>">
+                        value="<?= htmlspecialchars($value) ?>" <?= $field['is_required'] ? 'required' : '' ?>>
 
                     <?php endif; ?>
                     <?php if($field['field_type']=="date"): ?>
 
                     <input type="date" class="form-control" name="field_<?= $field['id'] ?>"
-                        value="<?= htmlspecialchars($value) ?>">
+                        value="<?= htmlspecialchars($value) ?>" <?= $field['is_required'] ? 'required' : '' ?>>
 
                     <?php endif; ?>
                     <?php if($field['field_type']=="email"): ?>
 
                     <input type="email" class="form-control" name="field_<?= $field['id'] ?>"
-                        value="<?= htmlspecialchars($value) ?>">
+                        value="<?= htmlspecialchars($value) ?>" <?= $field['is_required'] ? 'required' : '' ?>>
 
                     <?php endif; ?>
                     <?php if($field['field_type']=="textarea"): ?>
 
-                    <textarea class="form-control"
-                        name="field_<?= $field['id'] ?>"><?= htmlspecialchars($value) ?></textarea>
-
+                    <textarea class="form-control" name="field_<?= $field['id'] ?>"
+                        <?= $field['is_required'] ? 'required' : '' ?>><?= htmlspecialchars($value) ?></textarea>
                     <?php endif; ?>
 
                 </div>
 
                 <?php endforeach; ?>
-                <button class="btn btn-primary">
+                <a href="index.php?dataset_id=<?= $dataset_id ?>" class="btn btn-secondary">
+                    Back
+                </a>
 
+                <button type="submit" class="btn btn-primary">
                     Save Changes
-
                 </button>
-
             </form>
 
         </div>

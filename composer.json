@@ -1,0 +1,19 @@
+{
+    "name": "gauravpawar/database-portal",
+    "autoload": {
+        "psr-4": {
+            "Gauravpawar\\DatabasePortal\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gourav Pawar",
+            "email": "gouravpawar1012@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^5.9",
+        "dompdf/dompdf": "^3.1",
+        "setasign/fpdf": "^1.9"
+    }
+}

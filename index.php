@@ -41,7 +41,7 @@
                 <!-- Logo -->
                 <a class="navbar-brand fw-bold" href="#">
                     <i class="bi bi-database-fill"></i>
-                    DB Portal
+                    DataSphere AI
                 </a>
 
                 <!-- Mobile Toggle -->
@@ -58,32 +58,34 @@
                     <ul class="navbar-nav mx-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Home</a>
+                            <a class="nav-link active" href="#home">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="#features">Features</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="#about">About</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="#contact">Contact</a>
                         </li>
 
                     </ul>
 
                     <div class="d-flex gap-2">
 
-                        <button class="btn btn-outline-primary">
+                        <a href="auth/login.php" class="btn btn-outline-primary">
+                            <i class="bi bi-box-arrow-in-right"></i>
                             Login
-                        </button>
+                        </a>
 
-                        <button class="btn btn-primary">
+                        <a href="auth/login.php" class="btn btn-primary">
+                            <i class="bi bi-rocket-takeoff"></i>
                             Get Started
-                        </button>
+                        </a>
 
                     </div>
 
@@ -97,7 +99,7 @@
 
     <!-- ================= HERO SECTION ================= -->
 
-    <main class="hero">
+    <main class="hero" id="home">
 
         <div class="container">
 
@@ -129,17 +131,13 @@
 
                     <div class="hero-buttons">
 
-                        <button class="btn btn-primary btn-lg">
-
+                        <a href="auth/login.php" class="btn btn-primary">
                             Get Started
+                        </a>
 
-                        </button>
-
-                        <button class="btn btn-outline-primary btn-lg">
-
+                        <a href="dashboard/index.php" class="btn btn-outline-primary">
                             Live Demo
-
-                        </button>
+                        </a>
 
                     </div>
 
@@ -200,7 +198,7 @@
 
     <!-- ================= TRUSTED SECTION ================= -->
 
-    <section class="trusted">
+    <section class="trusted" id="about">
 
         <div class="container">
 
@@ -231,7 +229,7 @@
 
     <!-- ================= FEATURES SECTION ================= -->
 
-    <section class="features">
+    <section class="features" id="features">
 
         <div class="container">
 
@@ -362,12 +360,141 @@
 
     </section>
 
+    <section class="contact" id="contact">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Get In <span>Touch</span></h2>
+                <p>
+                    Have questions about DataSphere AI? We'd love to hear from you.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-5">
+
+                    <div class="contact-info">
+
+                        <div class="info-box">
+                            <i class="bi bi-envelope-fill"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>admin@datasphereai.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <i class="bi bi-telephone-fill"></i>
+                            <div>
+                                <h5>Phone</h5>
+                                <p>+91 93990 41883</p>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <div>
+                                <h5>Location</h5>
+                                <p>Jharkhand, India</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-7">
+
+                    <div class="contact-form">
+
+                        <form>
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" placeholder="Full Name">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control" placeholder="Email Address">
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="6" placeholder="Write your message..."></textarea>
+                            </div>
+
+                            <button class="btn btn-primary">
+                                <i class="bi bi-send-fill"></i>
+                                Send Message
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
     <!-- Footer -->
 
-    <footer>
+    <footer class="footer">
+
+        <div class="container text-center">
+
+            <h3>DataSphere AI</h3>
+
+            <p>
+                Modern Database Management Platform
+            </p>
+
+            <div class="social-icons">
+
+                <a href="#"><i class="bi bi-github"></i></a>
+
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+
+            </div>
+
+            <hr>
+
+            <p>
+                © 2026 DataSphere AI. All Rights Reserved.
+            </p>
+
+        </div>
 
     </footer>
 
+    <script>
+    window.addEventListener("scroll", function() {
+
+        const navbar = document.querySelector(".navbar");
+
+        if (window.scrollY > 50) {
+            navbar.style.padding = "8px 0";
+            navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,.15)";
+        } else {
+            navbar.style.padding = "12px 0";
+            navbar.style.boxShadow = "0 8px 30px rgba(0,0,0,.08)";
+        }
+
+    });
+    </script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 

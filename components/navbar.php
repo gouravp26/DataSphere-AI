@@ -16,7 +16,7 @@
 
         <div class="profile">
 
-            <img src="https://i.pravatar.cc/40" alt="">
+            <img src="<?= BASE_URL ?>/assets/images/avatar1.jpg" alt="Profile">
 
             <span><?= htmlspecialchars($_SESSION['user_name']) ?></span>
 

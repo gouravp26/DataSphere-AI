@@ -63,7 +63,7 @@ include "../../components/header.php";
 
                     <label>
 
-                        <?= htmlspecialchars($field['field_name']) ?>
+                        <?= htmlspecialchars($field['field_label']) ?>
 
                     </label>
 

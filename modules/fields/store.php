@@ -16,6 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 
 $dataset_id = (int)$_POST['dataset_id'];
 $field_name = trim($_POST['field_name']);
+$field_label = trim($_POST['field_label']);
+
+if ($field_label == "") {
+    $field_label = ucwords(str_replace('_', ' ', $field_name));
+}
+
 $field_type = $_POST['field_type'];
 $is_required = isset($_POST['is_required']) ? 1 : 0;
 
@@ -30,19 +36,28 @@ $stmt->execute([$dataset_id]);
 
 $field_order = $stmt->fetchColumn();
 
+$field_label = ucwords(str_replace('_', ' ', $field_name));
+
 $sql = "INSERT INTO dataset_fields
-(dataset_id, field_name, field_type, is_required, field_order)
-VALUES (?, ?, ?, ?, ?)";
+(dataset_id, field_name, field_label, field_type, is_required, field_order)
+VALUES (?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
 
 $stmt->execute([
     $dataset_id,
     $field_name,
+    $field_label,
     $field_type,
     $is_required,
     $field_order
 ]);
+
+$field_label = trim($_POST['field_label']);
+
+if ($field_label == "") {
+    $field_label = ucwords(str_replace('_', ' ', $field_name));
+}
 
 header("Location: index.php?dataset_id=".$dataset_id);
 exit();

@@ -31,6 +31,16 @@ body{
 
 }
 
+.sidebar a{
+
+    color:white;
+
+    text-decoration:none;
+
+    display:block;
+
+}
+
 .logo{
 
     font-size:28px;
@@ -71,7 +81,13 @@ body{
 
 .sidebar li:hover{
 
-    background:#4F46E5;
+    background:#dedee7;
+
+}
+
+.sidebar li:hover a{
+
+    color:white;
 
 }
 
@@ -235,6 +251,8 @@ body{
 
     transition:.35s;
 
+    cursor: pointer;
+
 }
 
 .card-box:hover{
@@ -280,6 +298,68 @@ body{
     margin:5px 0 0;
 
     color:#64748B;
+
+}
+
+/* ===============================
+   RECORDS HEADER FIXED
+================================ */
+
+.records-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    position:sticky;
+    top:0;
+
+    background:#f5f7fb;
+
+    z-index:100;
+
+    padding:15px 0;
+
+}
+
+
+.records-actions{
+
+    display:flex;
+    gap:10px;
+
+}
+
+
+/* Only table scrolls */
+
+.records-table{
+
+    overflow-x:auto;
+
+    width:100%;
+
+}
+
+
+.records-table table{
+
+    min-width:1200px;
+
+}
+
+
+/* keep table headers visible */
+
+.records-table thead th{
+
+    position:sticky;
+
+    top:0;
+
+    background:white;
+
+    z-index:5;
 
 }
 

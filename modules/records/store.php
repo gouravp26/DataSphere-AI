@@ -3,6 +3,7 @@
 require_once "../../config/session.php";
 require_once "../../config/constants.php";
 require_once "../../config/database.php";
+require_once "../../config/activity_logger.php";
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../../auth/login.php");
@@ -59,6 +60,14 @@ foreach($fields as $field){
         $field_id,
         $value
     ]);
+
+logActivity(
+    $conn,
+    $_SESSION['user_id'],
+    "CREATE",
+    "Record",
+    "Added record to ".$dataset_id
+);
 
 }
 
