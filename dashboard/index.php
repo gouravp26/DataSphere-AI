@@ -3,6 +3,7 @@
 require_once "../config/database.php";
 require_once "../config/session.php";
 require_once "../config/constants.php";
+
 if (!isset($_SESSION['user_id'])) {
 
     header("Location: ../auth/login.php");

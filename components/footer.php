@@ -2,7 +2,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="<?= BASE_URL ?>/assets/js/dashboard.js"></script>
-
+<script src="/Database-Portal/assets/js/animations.js"></script>
 
 </body>
 

@@ -112,7 +112,13 @@ if (isset($_SESSION['user_id'])) {
 
                         </div>
 
-                        <a href="#">Forgot Password?</a>
+                        <a href="forgot_password.php">
+                            Forgot Password?
+                        </a>
+
+                        <a href="register.php">
+                            Create Account
+                        </a>
 
                     </div>
 
